@@ -1,3 +1,7 @@
+#include "SyntacticalAnalyzer.h"
+
+
+
 /***********************************************************
 File: stmt.cpp
 Author: Jacques Beauvoir & Aaron Pineda
@@ -9,8 +13,6 @@ notes:
   - check nested loop for rule 9 
   - check if statement check for firsts 
 ************************************************************/
-#include "SyntacticalAnalyzer.h"
-
 int SyntacticalAnalyzer::stmt()
 {
         // Variable Declaration 
@@ -24,6 +26,16 @@ int SyntacticalAnalyzer::stmt()
 	p2file << "Entering stmt function; current token is: " 
 		<< lex->GetTokenName (token) << endl;
 
+	/*
+	// accepts if the token is in firsts 
+	// then moves to next token
+	if ( itr1 != firsts.end() ) {
+	  token = lex->GetToken();
+	}
+	else {
+	  cout << "not in firsts" << endl;
+	}
+	*/
 
 	// RULE 7
 	if ( token == NUMLIT_T || token == QUOTE_T || token == STRLIT_T ) {
@@ -41,20 +53,21 @@ int SyntacticalAnalyzer::stmt()
 	else if ( token == LPAREN_T ) {
 	  p2file << "Using Rule 9" << endl;
 
+	  p2file << "Entering define function; current token is: "
+                 << lex->GetTokenName (token) << endl;
+
 	  errors += action();
 
 	  if ( token == RPAREN_T ) {
 	    lex->GetTokenName (token);
-	    p2file << "Exiting RPAREN_T check in stmt function; current token is: "
+	    p2file << "Entering define function; current token is: "
 		   << lex->GetTokenName (token) << endl;
 	  }
 	  else {
 	    cout << "no RPAREN_T" << endl;
 	  }
 	}
-	else {
-	  cout << "no firsts" << endl;
-	}
+
 
 	p2file << "Exiting stmt function; current token is: " 
 		<< lex->GetTokenName (token) << endl;

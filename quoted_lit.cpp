@@ -1,14 +1,19 @@
+/************************************************************
+File: quoted_lit.cpp
+Author: Jacques Beauvoir & Aaron Pineda
+Description: This file has the quoted_lit
+non-terminal function assoc. with rule 13.
+ 
+13. <quoted_lit> -> <any_other_token>
+
+************************************************************/
 #include "SyntacticalAnalyzer.h"
+
 
 int SyntacticalAnalyzer::quoted_lit()
 {
-
+         // Variable Declrations 
 	int errors = 0;
-	p2file << "Entering quoted_lit function; current token is: " 
-		<< lex->GetTokenName (token) << endl;
-
-	p2file << "Using Rule 13" << endl;
-
 	static set<string> firsts = {LPAREN_T,IDENT_T,NUMLIT_T,STRLIT_T,CONS_T,IF_T,DISPLAY_T,
 				     NEWLINE_T,LISTOP_T,AND_T,OR_T,NOT_T,DEFINE_T,NUMBERP_T,
 				     SYMBOLP_T,LISTP_T,STRINGP_T,ZEROP_T,NULLP_T,PLUS_T,MINUS_T,
@@ -16,6 +21,20 @@ int SyntacticalAnalyzer::quoted_lit()
 				     COND_T,ELSE_T,RPAREN_T};
 	static set<string> follows = {IDENT_T,LPAREN_T,NUMLIT_T,STRLIT_T,QUOTE_T,RPAREN_T};
 
+	set<string>::iterator itr1 = firsts.find(token);
+	set<string>::iterator itr2 = follows.find(token);
+
+	p2file << "Entering quoted_lit function; current token is: " 
+	       << lex->GetTokenName (token) << endl;
+
+	// Singular rule means we can just use the set instead of the if-else blocks
+	// RULE 13
+	if( itr1 != firsts.end() ) {
+	  p2file << "Using Rule 13" << endl;
+	  errors += any_other_token();
+	}
+
+	
 	p2file << "Exiting quoted_lit function; current token is: " 
 		<< lex->GetTokenName (token) << endl;
 	return errors;

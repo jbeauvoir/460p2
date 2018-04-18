@@ -38,20 +38,13 @@ int SyntacticalAnalyzer::more_defines()
 	// RULE 3
 	if ( token == LPAREN_T ) {
 	  p2file << "Using Rule 3" << endl;
-
 	  errors += define();
 	  errors += more_defines();
-	  
-	  p2file << "Exiting LPAREN_T check; current token is: "
-		 << lex->GetTokenName (token) << endl;
 	}
 	// RULE 4
 	else if ( token == EOF_T ) {
 	  p2file << "Using Rule 4" << endl;
-
-	  p2file << "Exiting EOF_T check; current token is: "
-                 << lex->GetTokenName (token) << endl;
-
+	  
 	  return errors;
 	}
 	// SOL
