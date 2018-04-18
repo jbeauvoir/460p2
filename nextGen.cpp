@@ -6,6 +6,8 @@ using namespace std;
 
 int main()
 {
+  //  string non_terminal;
+  string ruleNum;
   string sentence;
   string mysent;
   string mysent2;
@@ -13,13 +15,15 @@ int main()
 
   cout << "Enter the filename w/o .cpp : ";
   cin >> fileName;
+  cout << "Enter the rule number(s): ";
+  cin >> ruleNum;
 
 /******************************************
 Program file structure:
 
 line 1 : comments
 line 2 : File: <non_terminal> + .cpp
-line 3 : Author: <ourNames> (<name1>+<name2>)
+line 3 : Author: Aaron Pineda & Jacques L. Beauvoir
 line 4 : Date: Spring 2018
 line 5 : Description: <descript>
 line 6 : comments
@@ -52,11 +56,23 @@ line 27: }
   cin >> mysent2;
 
   // Outputs to example.txt through a_file
-  a_file << "int " + fileName + "()" << "\n"
-	 << "{" << "\n"
+  a_file << "#include \"SyntacticalAnalyzer.h\"" << "\n" << "\n"
+	 << "int SyntacticalAnalyzer::" + fileName + "()" << "\n"
+	 << "{" << "\n" << "\n" 
+	 << "\t" << "int errors = 0;" << "\n" 
+	 << "\t" << "p2file << \"Entering " << fileName 
+	 << " function; current token is: \" " << "\n"
+	 << "\t" << "\t" << "<< lex->GetTokenName (token) << endl;" << "\n" << "\n"
+    
+	 << "\t" << "p2file << \"Using Rule " << ruleNum
+	 << "\" << endl;" << "\n" << "\n"  
+
 	 << "\t" << "static set<string> firsts = {" << mysent << "};" << "\n"
-	 << "\t" << "static set<string> follows = {" << mysent2 << "};" << "\n"
-	 << "\t" << "return 0;" << "\n"
+	 << "\t" << "static set<string> follows = {" << mysent2 << "};" << "\n" << "\n"
+	 << "\t" << "p2file << \"Exiting " << fileName 
+	 << " function; current token is: \" " << "\n"
+	 << "\t" << "\t" << "<< lex->GetTokenName (token) << endl;" << "\n"
+	 << "\t" << "return errors;" << "\n"
 	 << "}" << "\n";
 
   // Close the file stream explicitly
