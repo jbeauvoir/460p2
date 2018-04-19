@@ -40,6 +40,12 @@ int SyntacticalAnalyzer::more_tokens()
 	// RULE 14 
 	if( itr3 != AOT.end() ) {
 	  p2file << "Using Rule 14" << endl;
+
+	  token = lex->GetToken();
+	  p2file << "Inside Rule 14; current token is: " 
+		 << lex->GetTokenName (token) << endl;	 
+		
+	  // Non-terminal checks
 	  errors += any_other_token();
 	  errors += more_tokens();
 	}
