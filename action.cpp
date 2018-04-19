@@ -159,7 +159,6 @@ int SyntacticalAnalyzer::action()
 		return errors;
 	}
 
-	p2file << "Using Rule 24-49" << endl;
 
 	p2file << "Exiting action function; current token is: " 
 	       << lex->GetTokenName (token) << endl;
