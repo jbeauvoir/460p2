@@ -15,11 +15,11 @@ int SyntacticalAnalyzer::stmt()
 {
         // Variable Declaration 
         int errors = 0;
-  	static set<string> firsts = {IDENT_T,LPAREN_T,NUMLIT_T,STRLIT_T,QUOTE_T};
-	static set<string> follows = {IDENT_T,LPAREN_T,NUMLIT_T,STRLIT_T,QUOTE_T,
+  	static set<token_type> firsts = {IDENT_T,LPAREN_T,NUMLIT_T,STRLIT_T,QUOTE_T};
+	static set<token_type> follows = {IDENT_T,LPAREN_T,NUMLIT_T,STRLIT_T,QUOTE_T,
 				      RPAREN_T};
-	set<string>::iterator itr1 = firsts.find(token);
-        set<string>::iterator itr2 = follows.find(token);
+	set<token_type>::iterator itr1 = firsts.find(token);
+        set<token_type>::iterator itr2 = follows.find(token);
 
 	p2file << "Entering stmt function; current token is: " 
 		<< lex->GetTokenName (token) << endl;
@@ -28,24 +28,38 @@ int SyntacticalAnalyzer::stmt()
 	// RULE 7
 	if ( token == NUMLIT_T || token == QUOTE_T || token == STRLIT_T ) {
 	  p2file << "Using Rule 7" << endl;
+	
+	  token = lex->GetToken();
+		
+	  p2file << "Exiting rule 8 IDENT_T in stmt; current token is: " 
+		 << lex->GetTokenName (token) << endl;
+	  
 	  errors += literal();
 	}
 	// RULE 8
 	else if ( token == IDENT_T ) {
 	  p2file << "Using Rule 8" << endl;
-	  return errors;
+
+	  token = lex->GetToken();
+		
+	  p2file << "Exiting rule 8 IDENT_T in stmt; current token is: " 
+		 << lex->GetTokenName (token) << endl;
+
+		
 	}
-	// ****** note 
-	// check the rule to see if a nested loop is necessary 
+
 	// RULE 9
 	else if ( token == LPAREN_T ) {
 	  p2file << "Using Rule 9" << endl;
-
+	
+	  token = lex->GetToken();
+		
+          // Non-terminal check
 	  errors += action();
 
 	  if ( token == RPAREN_T ) {
 	    lex->GetTokenName (token);
-	    p2file << "Exiting RPAREN_T check in stmt function; current token is: "
+	    p2file << "Exiting rule 9 RPAREN_T check in stmt function; current token is: "
 		   << lex->GetTokenName (token) << endl;
 	  }
 	  else {
