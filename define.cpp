@@ -13,11 +13,11 @@ int SyntacticalAnalyzer::define()
 {
         // VARIABLE DECLARATION
 	int errors = 0;	
-	static set<string> firsts = {LPAREN_T};
-	static set<string> follows = {LPAREN_T,EOF_T};
+	static set<token_type> firsts = {LPAREN_T};
+	static set<token_type> follows = {LPAREN_T,EOF_T};
 	
-	set<string>::iterator itr1 = firsts.find(token);
-	set<string>::iterator itr2 = follows.find(token);
+	set<token_type>::iterator itr1 = firsts.find(token);
+	set<token_type>::iterator itr2 = follows.find(token);
 	
 	p2file << "Entering define function; current token is: " 
 	       << lex->GetTokenName (token) << endl;
