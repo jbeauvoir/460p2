@@ -15,8 +15,8 @@ int SyntacticalAnalyzer::param_list()
 {
 
 	int errors = 0;
-	static set<string> firsts = {IDENT_T,RPAREN_T};
-	static set<string> follows = {RPAREN_T};
+	static set<token_type> firsts = {IDENT_T,RPAREN_T};
+	static set<token_type> follows = {RPAREN_T};
 
 	p2file << "Entering param_list function; current token is: " 
 		<< lex->GetTokenName (token) << endl;
