@@ -15,8 +15,8 @@ int SyntacticalAnalyzer::stmt_pair()
 {
         // Variable Declaration
 	int errors = 0;
-	static set<string> firsts = {LPAREN_T,RPAREN_T};
-	static set<string> follows = {RPAREN_T};
+	static set<token_type> firsts = {LPAREN_T,RPAREN_T};
+	static set<token_type> follows = {RPAREN_T};
 	
 	p2file << "Entering stmt_pair function; current token is: " 
 	       << lex->GetTokenName (token) << endl;
