@@ -1,3 +1,37 @@
+/**************************************************
+File: literal.cpp
+Author: Jacques Beauvoir & Aaron Pineda
+Description: This file has the action 
+tag function assoc. with rules 24-49
+
+24. <action> -> IF_T <stmt> <stmt> <else_part>
+25. <action> -> COND_T LPAREN_T <stmt_pair_body>
+26. <action> -> LISTOP_T <stmt>
+27. <action> -> CONS_T <stmt> <stmt>
+28. <action> -> AND_T <stmt_list>
+29. <action> -> OR_T <stmt_list>
+30. <action> -> NOT_T <stmt>
+31. <action> -> NUMBERP_T <stmt>
+32. <action> -> SYMBOLP_T <stmt>
+33. <action> -> LISTP_T <stmt>
+34. <action> -> ZEROP_T <stmt>
+35. <action> -> NULLP_T <stmt>
+36. <action> -> STRINGP_T <stmt>
+37. <action> -> PLUS_T <stmt_list>
+38. <action> -> MINUS_T <stmt> <stmt_list>
+39. <action> -> DIV_T <stmt> <stmt_list>
+40. <action> -> MULT_T <stmt_list>
+41. <action> -> MODULO_T <stmt> <stmt>
+42. <action> -> EQUALTO_T <stmt_list>
+43. <action> -> GT_T <stmt_list>
+44. <action> -> LT_T <stmt_list>
+45. <action> -> GTE_T <stmt_list>
+46. <action> -> LTE_T <stmt_list>
+47. <action> -> IDENT_T <stmt_list>
+48. <action> -> DISPLAY_T <stmt>
+49. <action> -> NEWLINE_T
+************************************************************/
+
 #include "SyntacticalAnalyzer.h"
 
 int SyntacticalAnalyzer::action()
@@ -14,6 +48,116 @@ int SyntacticalAnalyzer::action()
 
 	p2file << "Entering action function; current token is: " 
 		<< lex->GetTokenName (token) << endl;
+	if(token == IF_T){
+		p2file << "Using rule 24" << endl;
+		errors += stmt();
+		errors += stmt();
+		errors += else_part();
+	}
+	else if(token == COND_T){
+		p2file << "Using rule 25" << endl;
+		lex->GetTokenName(token);
+		if(token == LPAREN_T){
+			p2file << "Using rule 25" << endl;
+		}
+		return errors;
+	}
+	else if(token == LISTOP_T){
+		p2file << "Using rule 26" << endl;
+		return errors;
+	}
+	else if(token == CONS_T){
+		p2file << "Using rule 27" << endl;
+		return errors;
+	}
+	else if(token == AND_T){
+		p2file << "Using rule 28" << endl;
+		return errors;
+	}
+	else if(token == OR_T){
+		p2file << "Using rule 29" << endl;
+		return errors;
+	}
+	else if(token == NOT_T){
+		p2file << "Using rule 30" << endl;
+		return errors;
+	}
+	else if(token == NUMBERP_T){
+		p2file << "Using rule 31" << endl;
+		return errors;
+	}
+	else if(token == SYMBOLP_T){
+		p2file << "Using rule 32" << endl;
+		return errors;
+	} 
+	else if(token == LISTP_T){
+		p2file << "Using rule 33" << endl;
+		return errors;
+	}
+	else if(token == ZEROP_T){
+		p2file << "Using rule 34" << endl;
+		return errors;
+	}
+	else if(token == NULLP_T){
+		p2file << "Using rule 35" << endl;
+		return errors;
+	}
+	else if(token == STRINGP_T){
+		p2file << "Using rule 36" << endl;
+		return errors;
+	}
+	else if(token == PLUS_T){
+		p2file << "Using rule 37" << endl;
+		return errors;
+	}
+	else if(token == MINUS_T){
+		p2file << "Using rule 38" << endl;
+		return errors;
+	}
+	else if(token == DIV_T){
+		p2file << "Using rule 39" << endl;
+		return errors;
+	} 
+	else if(token == MULT_T){
+		p2file << "Using rule 40" << endl;
+		return errors;
+	}
+	else if(token == MODULO_T){
+		p2file << "Using rule 41" << endl;
+		return errors;
+	}
+	else if(token == EQUALTO_T){
+		p2file << "Using rule 42" << endl;
+		return errors;
+	}
+	else if(token == GT_T){
+		p2file << "Using rule 43" << endl;
+		return errors;
+	}
+	else if(token == LT_T){
+		p2file << "Using rule 44" << endl;
+		return errors;
+	}
+	else if(token == GTE_T){
+		p2file << "Using rule 45" << endl;
+		return errors;
+	}
+	else if(token == LTE_T){
+		p2file << "Using rule 46" << endl;
+		return errors;
+	}
+	else if(token == IDENT_T){
+		p2file << "Using rule 47" << endl;
+		return errors;
+	}
+	else if(token == DISPLAY_T){
+		p2file << "Using rule 48" << endl;
+		return errors;
+	} 
+	else if{
+		p2file << "Using rule 49" << endl;
+		return errors;
+	}
 
 	p2file << "Using Rule 24-49" << endl;
 
