@@ -59,106 +59,108 @@ int SyntacticalAnalyzer::action()
 		lex->GetTokenName(token);
 		if(token == LPAREN_T){
 			p2file << "Using rule 25" << endl;
+			errors += stmt_pair_body();
 		}
-		return errors;
 	}
 	else if(token == LISTOP_T){
 		p2file << "Using rule 26" << endl;
-		return errors;
+		errors += stmt();
 	}
 	else if(token == CONS_T){
 		p2file << "Using rule 27" << endl;
-		return errors;
+		errors += stmt();
+		errors += stmt();
 	}
 	else if(token == AND_T){
 		p2file << "Using rule 28" << endl;
-		return errors;
+		errors += stmt_list();
 	}
 	else if(token == OR_T){
 		p2file << "Using rule 29" << endl;
-		return errors;
+		errors += stmt_list();
 	}
 	else if(token == NOT_T){
 		p2file << "Using rule 30" << endl;
-		return errors;
+		errors += stmt();
 	}
 	else if(token == NUMBERP_T){
 		p2file << "Using rule 31" << endl;
-		return errors;
+		errors += stmt();
 	}
 	else if(token == SYMBOLP_T){
 		p2file << "Using rule 32" << endl;
-		return errors;
+		errors += stmt();
 	} 
 	else if(token == LISTP_T){
 		p2file << "Using rule 33" << endl;
-		return errors;
+		errors += stmt();
 	}
 	else if(token == ZEROP_T){
 		p2file << "Using rule 34" << endl;
-		return errors;
+		errors += stmt();
 	}
 	else if(token == NULLP_T){
 		p2file << "Using rule 35" << endl;
-		return errors;
+		errors += stmt();
 	}
 	else if(token == STRINGP_T){
 		p2file << "Using rule 36" << endl;
-		return errors;
+		errors += stmt();
 	}
 	else if(token == PLUS_T){
 		p2file << "Using rule 37" << endl;
-		return errors;
+		errors += stmt_list();
 	}
 	else if(token == MINUS_T){
 		p2file << "Using rule 38" << endl;
-		return errors;
+		errors += stmt();
+		errors += stmt_list();
 	}
 	else if(token == DIV_T){
 		p2file << "Using rule 39" << endl;
-		return errors;
+		errors += stmt();
+		errors += stmt_list();
 	} 
 	else if(token == MULT_T){
 		p2file << "Using rule 40" << endl;
-		return errors;
+		errors += stmt_list();
 	}
 	else if(token == MODULO_T){
 		p2file << "Using rule 41" << endl;
-		return errors;
+		errors += stmt();
+		errors += stmt();
 	}
 	else if(token == EQUALTO_T){
 		p2file << "Using rule 42" << endl;
-		return errors;
+		errors += stmt_list();
 	}
 	else if(token == GT_T){
 		p2file << "Using rule 43" << endl;
-		return errors;
+		errors += stmt_list();
 	}
 	else if(token == LT_T){
 		p2file << "Using rule 44" << endl;
-		return errors;
+		errors += stmt_list();
 	}
 	else if(token == GTE_T){
 		p2file << "Using rule 45" << endl;
-		return errors;
+		errors += stmt_list();
 	}
 	else if(token == LTE_T){
 		p2file << "Using rule 46" << endl;
-		return errors;
+		errors += stmt_list();
 	}
 	else if(token == IDENT_T){
 		p2file << "Using rule 47" << endl;
-		return errors;
+		errors += stmt_list();
 	}
 	else if(token == DISPLAY_T){
 		p2file << "Using rule 48" << endl;
-		return errors;
+		errors += stmt();
 	} 
 	else if{
 		p2file << "Using rule 49" << endl;
-		return errors;
 	}
-
 
 	p2file << "Exiting action function; current token is: " 
 	       << lex->GetTokenName (token) << endl;
