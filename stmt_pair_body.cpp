@@ -13,9 +13,9 @@ int SyntacticalAnalyzer::stmt_pair_body()
 {
         // Variable Declaration
 	int errors = 0;
-	static set<string> firsts = {ELSE_T,IDENT_T,LPAREN_T,NUMLIT_T,STRLIT_T,QUOTE_T};
-	static set<string> follows = {RPAREN_T};
-	set<string>::iterator itr1 = firsts.find(token);
+	static set<token_type> firsts = {ELSE_T,IDENT_T,LPAREN_T,NUMLIT_T,STRLIT_T,QUOTE_T};
+	static set<token_type> follows = {RPAREN_T};
+	set<token_type>::iterator itr1 = firsts.find(token);
 
 	p2file << "Entering stmt_pair_body function; current token is: " 
 	       << lex->GetTokenName (token) << endl;
