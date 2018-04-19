@@ -31,6 +31,13 @@ int SyntacticalAnalyzer::quoted_lit()
 	// RULE 13
 	if( itr1 != firsts.end() ) {
 	  p2file << "Using Rule 13" << endl;
+	 
+	  token = lex->GetToken();
+		
+	  p2file << "Exiting rule 13 function; current token is: " 
+	       << lex->GetTokenName (token) << endl;
+
+          // Non-terminal check
 	  errors += any_other_token();
 	}
 
