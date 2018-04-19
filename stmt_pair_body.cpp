@@ -31,10 +31,23 @@ int SyntacticalAnalyzer::stmt_pair_body()
 	if( token == ELSE_T ) {
 	  
 	  p2file << "Using Rule 23" << endl;
+	  
+	  token = lex->GetToken();
+	  
+	  p2file << "Exiting RPAREN_T check in stmt_pair_body function; current token is: "
+		 << lex->GetTokenName (token) << endl;
+	  
+	  // Non-terminal checks
 	  errors += stmt();
-	  // terminal after <stmt>
+
+	  // Terminal after <stmt>
 	  if( token == RPAREN_T ) {
-	    return errors++;
+	    ltoken = lex->GetToken();
+	    
+	    p2file << "Exiting RPAREN_T check in stmt_pair_body function; current token is: "
+		   << lex->GetTokenName (token) << endl;
+	    
+	    // return errors++;
 	  }
 	  else {
 	    cout << "error in stmt_pair_body for RPAREN" << endl;
@@ -45,16 +58,24 @@ int SyntacticalAnalyzer::stmt_pair_body()
 	else if ( itr1 != firsts.end() ) {
 	  p2file << "Using Rule 22" << endl;
 	  
+	  // Non-terminal checks
 	  errors += stmt();
 	  errors += stmt();
 	  
 	  // Non-terminal check after <stmt>
 	  if ( token == RPAREN_T ) {
+
+	    token = lex->GetToken();
+		  
+	    p2file << "Exiting RPAREN_T check in stmt_pair_body function; current token is: "
+		   << lex->GetTokenName (token) << endl;
+	    
+	    // Non-terminal check
 	    errors += stmt_pair();
 	  }
 	  else{
 	    cout << "error in error in stmt_pair_body for RPAREN rule 23" << endl;
-	    return errors++;
+	
 	  }
 	}
 	// error stuff
