@@ -60,8 +60,11 @@ int SyntacticalAnalyzer::Program ()
 	
 	// Body of function goes here.
 	p2file << "Using Rule 1" << endl;
-	//errors += Define ();
-	//errors += More_Defines ();
+	
+	if(token == LPAREN_T){
+		errors += define ();
+		errors += more_defines ();
+	}
 	if (token != EOF_T)
 	{
 		errors++;
@@ -70,5 +73,6 @@ int SyntacticalAnalyzer::Program ()
 	// token should be in follows of Program
 	p2file << "Exiting Program function; current token is: "
 					<< lex->GetTokenName (token) << endl;
+	
 	return errors;
 }
