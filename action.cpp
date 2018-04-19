@@ -56,6 +56,7 @@ int SyntacticalAnalyzer::action()
 	}
 	else if(token == COND_T){
 		p2file << "Using rule 25" << endl;
+		token = lex->GetToken();
 		lex->GetTokenName(token);
 		if(token == LPAREN_T){
 			p2file << "Using rule 25" << endl;
