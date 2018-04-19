@@ -20,11 +20,11 @@ int SyntacticalAnalyzer::more_defines()
 {
 
 	int errors = 0;
-	static set<string> firsts = {LPAREN_T,EOF_T};
-	static set<string> follows = {EOF_T};
+	static set<token_type> firsts = {LPAREN_T,EOF_T};
+	static set<token_type> follows = {EOF_T};
 
-	set<string>::iterator itr1 = firsts.find(token);
-        set<string>::iterator itr2 = follows.find(token);
+	set<token_type>::iterator itr1 = firsts.find(token);
+        set<token_type>::iterator itr2 = follows.find(token);
 
 	// this should be a LPAREN
 	p2file << "Entering more_defines function; current token is: " 
