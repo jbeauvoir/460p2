@@ -24,16 +24,28 @@ int SyntacticalAnalyzer::literal()
 	// RULE 10 
 	if ( token == NUMLIT_T ) {
 	  p2file << "Using Rule 10" << endl;
-	  return errors;
+
+	  token = lex->GetToken();
+	  
+          p2file << "Exiting NUMLIT_T check in stmt function; current token is: "
+	         << lex->GetTokenName (token) << endl;
 	}
 	// RULE 11
 	else if ( token == STRLIT_T ) {
+		
 	  p2file << "Using Rule 11" << endl;
-	  return errors;
+
+	  token = lex->GetToken();
+	  
+          p2file << "Exiting STRLIT_T check in stmt function; current token is: "
+	         << lex->GetTokenName (token) << endl;
 	}
 	// RULE 12 
 	else if ( token == QUOTE_T ) {
 	  p2file << "Using Rule 12" << endl;
+	  
+	  token = lex->GetToken();
+	  
 	  errors += quoted_lit();
 	} 
 	// no valid first
