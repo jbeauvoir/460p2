@@ -161,6 +161,7 @@ int SyntacticalAnalyzer::action()
 	} 
 	else if{
 		p2file << "Using rule 49" << endl;
+		token = lex->GetToken();
 	}
 
 	p2file << "Exiting action function; current token is: " 
