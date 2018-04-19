@@ -50,6 +50,7 @@ int SyntacticalAnalyzer::action()
 		<< lex->GetTokenName (token) << endl;
 	if(token == IF_T){
 		p2file << "Using rule 24" << endl;
+		token = lex->GetToken();
 		errors += stmt();
 		errors += stmt();
 		errors += else_part();
@@ -60,6 +61,7 @@ int SyntacticalAnalyzer::action()
 		lex->GetTokenName(token);
 		if(token == LPAREN_T){
 			p2file << "Using rule 25" << endl;
+			token = lex->GetToken();
 			errors += stmt_pair_body();
 		}
 	}
