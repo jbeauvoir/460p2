@@ -196,7 +196,7 @@ int SyntacticalAnalyzer::any_other_token()
 		p2file << "Using rule 81" << endl;
 	
 	}
-
+	token = lex->GetToken();
 	p2file << "Exiting any_other_token function; current token is: " 
 		<< lex->GetTokenName (token) << endl;
 
