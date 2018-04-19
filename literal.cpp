@@ -14,8 +14,8 @@ int SyntacticalAnalyzer::literal()
 {
         // Variable Declarations
         int errors = 0;
-	static set<string> firsts = {NUMLIT_T,STRLIT_T,QUOTE_T};
-	static set<string> follows = {IDENT_T,LPAREN_T,NUMLIT_T,STRLIT_T,QUOTE_T,
+	static set<token_type> firsts = {NUMLIT_T,STRLIT_T,QUOTE_T};
+	static set<token_type> follows = {IDENT_T,LPAREN_T,NUMLIT_T,STRLIT_T,QUOTE_T,
 				      RPAREN_T};
 	  
 	p2file << "Entering literal function; current token is: " 
