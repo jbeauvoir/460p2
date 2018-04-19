@@ -24,6 +24,12 @@ int SyntacticalAnalyzer::param_list()
 	// RULE 16
 	if ( token == IDENT_T ) {
 	  p2file << "Using Rule 16" << endl;
+
+	  lex->GetTokenName (token);
+
+	  p2file << "Exiting IDENT_T check in param_list function; current token is: "
+		 << lex->GetTokenName (token) << endl;
+
 	  errors += param_list();
 	}
 
