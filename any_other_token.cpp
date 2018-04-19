@@ -61,99 +61,135 @@ int SyntacticalAnalyzer::any_other_token()
 
 	if(token == LPAREN_T){
 		p2file << "Using rule 50" << endl;
+		errors += more_tokens();
+		if(token == RPAREN_T){
+			p2file << "Using rule 50" << endl;
+			token = lex->GetToken();
+		}
 	}
 	else if(token == IDENT_T){
 		p2file << "Using rule 51" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == NUMLIT_T){
 		p2file << "Using rule 52" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == STRLIT_T){
 		p2file << "Using rule 53" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == CONS_T){
 		p2file << "Using rule 54" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == IF_T){
 		p2file << "Using rule 55" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == DISPLAY_T){
 		p2file << "Using rule 56" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == NEWLINE_T){
 		p2file << "Using rule 57" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == LISTOP_T){
 		p2file << "Using rule 58" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == AND_T){
 		p2file << "Using rule 59" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == OR_T) {
 		p2file << "Using rule 60" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == NOT_T){
 		p2file << "Using rule 61" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == DEFINE_T){
 		p2file << "Using rule 62" << endl;
+		token = lex->GetToken();
 	} 
 	else if(token == NUMBERP_T){
 		p2file << "Using rule 63" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == SYMBOLP_T){
 		p2file << "Using rule 64" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == LISTP_T){
 		p2file << "Using rule 65" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == ZEROP_T){
 		p2file << "Using rule 66" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == NULLP_T){
 		p2file << "Using rule 67" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == STRINGP_T){
 		p2file << "Using rule 68" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == PLUS_T){
 		p2file << "Using rule 69" << endl;
+		token = lex->GetToken();
 	} 
 	else if(token == MINUS_T){
 		p2file << "Using rule 70" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == DIV_T){
 		p2file << "Using rule 71" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == MULT_T){
 		p2file << "Using rule 72" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == MODULO_T){
 		p2file << "Using rule 73" << endl;
+		token = lex->GetToken();
 	} 
 	else if(token == EQUALTO_T){
 		p2file << "Using rule 74" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == GT_T){
 		p2file << "Using rule 75" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == LT_T){
 		p2file << "Using rule 76" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == GTE_T){
 		p2file << "Using rule 77" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == LTE_T){
 		p2file << "Using rule 78" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == QUOTE_T){
 		p2file << "Using rule 79" << endl;
+		errors += any_other_token();
 	}
 	else if(token == COND_T){
 		p2file << "Using rule 80" << endl;
+		token = lex->GetToken();
 	}
 	else if(token == ELSE_T){
 		p2file << "Using rule 81" << endl;
+		token = lex->GetToken();
 	}
 
 	p2file << "Exiting any_other_token function; current token is: " 
