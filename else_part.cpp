@@ -15,10 +15,10 @@ int SyntacticalAnalyzer::else_part()
 {
         // Variable Declaration
  	int errors = 0;
-	static set<string> firsts = {IDENT_T,LPAREN_T,NUMLIT_T,STRLIT_T,QUOTE_T,RPAREN_T};
-	static set<string> follows = {RPAREN_T};
-	set<string>::iterator itr1 = firsts.find(token);
-	set<string>::iterator itr2 = follows.find(token);
+	static set<token_type> firsts = {IDENT_T,LPAREN_T,NUMLIT_T,STRLIT_T,QUOTE_T,RPAREN_T};
+	static set<token_type> follows = {RPAREN_T};
+	set<token_type>::iterator itr1 = firsts.find(token);
+	set<token_type>::iterator itr2 = follows.find(token);
 
 	p2file << "Entering else_part function; current token is: " 
 		<< lex->GetTokenName (token) << endl;
